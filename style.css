@@ -1,32 +1,41 @@
+@charset "UTF-8";
 /*
  * Use this CSS to learn some intersting techniques,
  * in case you're wondering how I built the UI.
  * Have fun! 😁
  */
-
+@use 'custom';
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #444;
-  background-color: #f3f3f3;
+  background-color: #e9d8a6;
   height: 100vh;
   padding: 2rem;
 }
 
 nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 2rem;
 }
 
@@ -40,6 +49,8 @@ nav {
 }
 
 .login {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -54,12 +65,25 @@ nav {
   margin-right: 1rem;
   color: inherit;
   border: 1px solid #fff;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .login__input:focus {
   outline: none;
   border: 1px solid #ccc;
+}
+
+.login__input::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+.login__input:-ms-input-placeholder {
+  color: #bbb;
+}
+
+.login__input::-ms-input-placeholder {
+  color: #bbb;
 }
 
 .login__input::placeholder {
@@ -72,6 +96,7 @@ nav {
   font-size: 2.2rem;
   color: inherit;
   cursor: pointer;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -88,21 +113,31 @@ nav {
   position: relative;
   max-width: 100rem;
   margin: 4rem auto;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 4fr 3fr;
-  grid-template-rows: auto repeat(3, 15rem) auto;
+  -ms-grid-columns: 4fr 3fr;
+      grid-template-columns: 4fr 3fr;
+  -ms-grid-rows: auto (15rem)[3] auto;
+      grid-template-rows: auto repeat(3, 15rem) auto;
   gap: 2rem;
-
   /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
+  -webkit-transition: all 1s;
   transition: all 1s;
 }
 
 .balance {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 2rem;
 }
 
@@ -124,6 +159,8 @@ nav {
 
 /* MOVEMENTS */
 .movements {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
   grid-row: 2 / span 3;
   background-color: #fff;
   border-radius: 1rem;
@@ -132,8 +169,12 @@ nav {
 
 .movements__row {
   padding: 2.25rem 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom: 1px solid #eee;
 }
 
@@ -155,10 +196,12 @@ nav {
 }
 
 .movements__type--deposit {
+  background-image: -webkit-gradient(linear, right bottom, left top, from(#39b385), to(#9be15d));
   background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
 .movements__type--withdrawal {
+  background-image: -webkit-gradient(linear, right bottom, left top, from(#e52a5a), to(#ff585f));
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
@@ -169,9 +212,15 @@ nav {
 
 /* SUMMARY */
 .summary {
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
   grid-row: 5 / 6;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: baseline;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   padding: 0 0.3rem;
   margin-top: 1rem;
 }
@@ -214,15 +263,18 @@ nav {
 }
 
 .operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  background-image: -webkit-gradient(linear, right bottom, left top, from(#ee9b00), to(#ffcb03));
+  background-image: linear-gradient(to top left, #ee9b00, #ffcb03);
 }
 
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-image: -webkit-gradient(linear, right bottom, left top, from(#90be6d), to(#9be15d));
+  background-image: linear-gradient(to top left, #90be6d, #9be15d);
 }
 
 .operation--close {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  background-image: -webkit-gradient(linear, right bottom, left top, from(#ae2012), to(#ff585f));
+  background-image: linear-gradient(to top left, #ae2012, #ff585f);
 }
 
 h2 {
@@ -233,21 +285,27 @@ h2 {
 }
 
 .form {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 2.5fr 2.5fr 1fr;
-  grid-template-rows: auto auto;
+  -ms-grid-columns: 2.5fr 2.5fr 1fr;
+      grid-template-columns: 2.5fr 2.5fr 1fr;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
   gap: 0.4rem 1rem;
 }
 
 /* Exceptions for interst */
 .form.form--loan {
-  grid-template-columns: 2.5fr 1fr 2.5fr;
+  -ms-grid-columns: 2.5fr 1fr 2.5fr;
+      grid-template-columns: 2.5fr 1fr 2.5fr;
 }
+
 .form__label--loan {
+  -ms-grid-row: 2;
   grid-row: 2;
 }
-/* End exceptions */
 
+/* End exceptions */
 .form__input {
   width: 100%;
   border: none;
@@ -258,6 +316,7 @@ h2 {
   color: #333;
   padding: 0.3rem 1rem;
   border-radius: 0.7rem;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -277,6 +336,7 @@ h2 {
   font-size: 1.8rem;
   background-color: #fff;
   cursor: pointer;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -295,3 +355,4 @@ h2 {
 .timer {
   font-weight: 600;
 }
+/*# sourceMappingURL=style.css.map */

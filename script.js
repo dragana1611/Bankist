@@ -61,6 +61,45 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''; //to get rid off data
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+     <div class="movements__row">
+          <div class="movements__type movements__type--${type} ">${
+      i + 1
+    } ${type}</div>
+          <div class="movements__value">${mov}</div>
+        </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
+const calcDisplayBalance = movements => {
+  const balance = movements.reduce((acc, move) => acc + move, 0);
+  labelBalance.textContent = ` ${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const createUsernames = accs => {
+  accs.forEach(acc => {
+    //  produce so-called side effects, do some work without returning anything
+    acc.username = acc.owner // new property
+      .toLocaleLowerCase()
+      .split(' ')
+      .map(name => name[0]) //allows us to create a new simple array
+      .join('');
+  });
+};
+//console.log(createUsernames('Steven Thomas Williams'));
+//const user = 'Steven Thomas Williams'; //username: stw
+createUsernames(accounts);
+//console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
