@@ -1,8 +1,4 @@
-/*
- * Use this CSS to learn some intersting techniques,
- * in case you're wondering how I built the UI.
- * Have fun! 😁
- */
+
 @use 'custom';
 * {
   margin: 0;
@@ -18,7 +14,7 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   color: #444;
-  background-color: #e9d8a6;
+  background-color: #faf5e7;
   height: 100vh;
   padding: 2rem;
 }
@@ -93,8 +89,8 @@ nav {
   grid-template-rows: auto repeat(3, 15rem) auto;
   gap: 2rem;
 
-  /* NOTE This creates the fade in/out anumation */
-  //   opacity: 0;
+  
+    opacity: 0;
   transition: all 1s;
 }
 
